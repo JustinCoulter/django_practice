@@ -88,7 +88,7 @@ class BookInstance(models.Model):
     class Meta:
         ordering = ['due_back']
         permissions = (("can_mark_returned", "Set book as returned"),)
-        
+
     def __str__(self):
         """String for representing the Model object."""
         return f'"{self.book.title}" ({self.status}) ({self.due_back}) {self.id}'
@@ -96,15 +96,13 @@ class BookInstance(models.Model):
 class Author(models.Model):
     """Model representing an author."""
 
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular book across whole library')
-    # id = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
     
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
 
-    # print(Author.id)
+ 
 
     class Meta:
         ordering = ['last_name', 'first_name']
